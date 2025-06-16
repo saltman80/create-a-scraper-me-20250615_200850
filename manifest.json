@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "AppSumo Title Collector Extension",
+  "version": "1.0",
+  "description": "Easily scrape and collect product titles from AppSumo.",
+  "permissions": [
+    "storage",
+    "scripting",
+    "downloads",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "*://*.appsumo.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.appsumo.com/browse/*", "*://*.appsumo.com/search/*", "*://*.appsumo.com/products/*"],
+      "js": ["content_script.js"],
+      "css": ["content_style.css"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
